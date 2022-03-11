@@ -11,8 +11,7 @@ def get_model(layers):
     e = visible
     # encoder level 1
     for layer in layers[:-1]:
-        e = Dense(layer)(e)
-        e = ReLU()(e)
+        e = Dense(layer, use_bias=False)(e)
 
     e = Dense(layers[-1])(e)
      
@@ -29,3 +28,11 @@ def get_model(layers):
     # plot the autoencoder
     # plot_model(model, 'autoencoder_compress.png', show_shapes=True)
     return model
+
+model = get_model([3, 2])
+print(model.summary())
+
+print(model.weights)
+
+def prediction(model):
+    pass
